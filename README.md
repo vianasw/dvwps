@@ -12,24 +12,23 @@ If you choose to use the MySQL Docker container and you want the changes to the 
 1. Create a data only container dockerfile:
   
   ```
-  FROM ubuntu:14.04
-  MAINTAINER William Viana <vianasw@gmail.com>
-  VOLUME /var/lib/mysql
+FROM ubuntu:14.04
+MAINTAINER William Viana <vianasw@gmail.com>
+VOLUME /var/lib/mysql
   
-  CMD ["true"]
+CMD ["true"]
   
   ```
 2. Then run the following commands:
   
   ```
-  $ docker build -t username/mysql_datastore .
-  $ docker run --name wp_data username/mysql_datastore
-  
+$ docker build -t username/mysql_datastore .
+$ docker run --name wp_data username/mysql_datastore
   ```
 3. After that, you can run the MySQL Docker container like this:
   
   ```
-  $ docker run --name wp_db -p 3306:3306 --volumes-from wp_data  -v /path/to/dvwps/configs/:/etc/mysql/conf.d  -e MYSQL_ROOT_PASSWORD=password -e MYSQL_USER=wordpressuser -e MYSQL_PASSWORD=password -e MYSQL_DATABASE=wordpress -d mysql:5.6
+$ docker run --name wp_db -p 3306:3306 --volumes-from wp_data  -v /path/to/dvwps/configs/:/etc/mysql/conf.d  -e MYSQL_ROOT_PASSWORD=password -e MYSQL_USER=wordpressuser -e MYSQL_PASSWORD=password -e MYSQL_DATABASE=wordpress -d mysql:5.6
   ```
   
   Notice that you have to include the path where you have the `mysql.cnf` file stored.

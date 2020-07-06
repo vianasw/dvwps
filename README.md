@@ -33,7 +33,7 @@ $ docker run --name wp_db -p 3306:3306 --volumes-from wp_data  -v /path/to/dvwps
   
   Notice that you have to include the path where you have the `mysql.cnf` file stored.
 
-###Running the container
+### Running the container
 If you chose to execute MySQL from a Docker container you just have to execute the following command, otherwise ignore the `--link` argument.
 
 ```
